@@ -1,7 +1,7 @@
 {
   "name": "rda-service-registry",
   "version": "1.0.0",
-  "description": "service registry for the rda framework",
+  "description": "Service registry for the RDA framework",
   "main": "index.mjs",
   "scripts": {
     "test": "node --experimental-modules ./node_modules/.bin/section ./test/*.mjs --dev --subenv-testing --log-level=error+ --log-module=*"

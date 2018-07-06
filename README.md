@@ -19,8 +19,8 @@ payload:
 
 ```json
 {
-    serviceType: "rda-compute-node",
-    instanceId: "uuid.v4"
+    "serviceType": "rda-compute-node",
+    "instanceId": "uuid.v4"
 }
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "rda-service-registry",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Service registry for the RDA framework",
   "main": "index.mjs",
   "scripts": {
@@ -29,7 +29,8 @@
     "logd-console-transport": "^1.0.0",
     "rda-service": "^1.1.0",
     "related": "^2.15.0",
-    "related-timestamps": "^2.0.0"
+    "related-timestamps": "^2.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "section-tests": "^2.1.0",

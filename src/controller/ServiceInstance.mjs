@@ -3,8 +3,10 @@
 
 import {Controller} from 'rda-service';
 import type from 'ee-types';
-import log from 'ee-log';
+import logd from 'logd';
 
+
+const log = logd.module('rda-service-registry');
 
 
 
@@ -86,11 +88,21 @@ export default class ServiceInstanceController extends Controller {
 
 
             // register instance
-            return new this.db.serviceInstance({
+            let instance = await new this.db.serviceInstance({
                 identifier: data.identifier,
                 updated: new Date(),
                 serviceType: serviceType
             }).save();
+
+
+            log.info(`Successfully registered service instance '${data.identifier}' of type ${data.serviceType} ...`);
+
+            // set the ttl interval on the response so the
+            // client knows how often to call the registry
+            instance = instance.toJSON();
+            instance.ttl = this.serviceTTL;
+
+            return instance;
         }
     }
 
@@ -113,6 +125,10 @@ export default class ServiceInstanceController extends Controller {
 
             if (instance) {
                 instance.updated = new Date();
+
+
+                log.debug(`Updating registered service instance '${instance.identifier}' ...`);
+
                 return await instance.save();
             } else response.status(404).send(`Service instance '${identifier}' not found!`);
         }
@@ -137,6 +153,9 @@ export default class ServiceInstanceController extends Controller {
 
             if (instance) {
                 instance.deleted = new Date();
+
+                log.info(`Removing registered service instance '${instance.identifier}' ...`);
+
                 return await instance.save();
             } else response.status(404).send(`Service instance '${identifier}' not found!`);
         }

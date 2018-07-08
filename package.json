@@ -1,6 +1,6 @@
 {
   "name": "rda-service-registry",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Service registry for the RDA framework",
   "main": "index.mjs",
   "scripts": {

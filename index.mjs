@@ -7,10 +7,6 @@ import ConsoleTransport from 'logd-console-transport';
 
 
 
-// enable console logging
-logd.transport(new ConsoleTransport());
-
-
 
 export {
     RegistryClient, 

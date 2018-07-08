@@ -52,7 +52,7 @@ export default class ServiceRegistryClient {
 
 
         // run again
-        this.isDeregistered();
+        this.pollRegistry();
     }
 
 

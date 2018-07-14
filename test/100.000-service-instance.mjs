@@ -32,6 +32,7 @@ section('RDA Service Registry', (section) => {
         const response = await request.post(`${host}/rda-service-registry.service-instance`).ok(res => res.status === 201).send({
             identifier: id,
             serviceType: 'test',
+            ipv4address: 'whatever',
         });
         const data = response.body;
 
@@ -56,6 +57,7 @@ section('RDA Service Registry', (section) => {
         const response = await request.post(`${host}/rda-service-registry.service-instance`).ok(res => res.status === 201).send({
             identifier: id,
             serviceType: 'test',
+            ipv4address: 'whatever',
         });
         const data = response.body;
 
@@ -91,6 +93,7 @@ section('RDA Service Registry', (section) => {
         const response = await request.post(`${host}/rda-service-registry.service-instance`).ok(res => res.status === 201).send({
             identifier: id,
             serviceType: 'test',
+            ipv4address: 'whatever',
         });
         const data = response.body;
 
@@ -126,6 +129,7 @@ section('RDA Service Registry', (section) => {
         const response = await request.post(`${host}/rda-service-registry.service-instance`).ok(res => res.status === 201).send({
             identifier: id,
             serviceType: 'test',
+            ipv4address: 'whatever',
         });
         const data = response.body;
 

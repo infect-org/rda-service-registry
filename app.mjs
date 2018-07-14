@@ -9,11 +9,6 @@ import Service from './index.mjs';
 const log = logd.module('rda-service-registry');
 
 
-// enable console logging
-logd.transport(new ConsoleTransport());
-
-
-
 
 
 // run the service

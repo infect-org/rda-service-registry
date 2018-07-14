@@ -56,7 +56,8 @@ export default class ServiceRegistry extends RDAService {
         this.registerController(new ServiceInstanceController(options));
 
 
-        await super.load();
+        // laod the server, det port explicitly
+        await super.load(this.config.port);
     }
 
 

@@ -16,6 +16,8 @@ create table rda_service_registry."serviceType" (
 create table rda_service_registry."serviceInstance" (
     id serial not null,
     identifier varchar(100) not null,
+    ipv4address varchar (300),
+    ipv6address varchar (300),
     "id_serviceType" int not null,
     created timestamp without time zone not null default now(),
     updated timestamp without time zone not null default now(),
@@ -28,5 +30,7 @@ create table rda_service_registry."serviceInstance" (
         on update cascade
         on delete restrict,
     constraint "serviceInstance_unique_identifier"
-        unique ("identifier")
+        unique ("identifier"),
+    constraint "serviceInstance_check_address_not_null"
+        check ("ipv4address" is not null or "ipv6address" is not null)
 );

@@ -88,6 +88,17 @@ export default class ServiceRegistryClient {
 
 
 
+
+    /**
+    * set the port of the server
+    */
+    setPort(port) {
+        this.webserverPort = port;
+    }
+
+
+
+
     /**
     * register service
     */

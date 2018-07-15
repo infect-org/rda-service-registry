@@ -5,6 +5,7 @@ import section from 'section-tests';
 import request from 'superagent';
 import assert from 'assert';
 import log from 'ee-log';
+import machineId from 'ee-machine-id';
 
 
 
@@ -21,7 +22,7 @@ section('RDA Service Registry', (section) => {
         await section.wait(200);
         await service.end();
     });
-    
+
 
     section.test('Register a new Service', async() => {
         const service = new Service();
@@ -35,6 +36,7 @@ section('RDA Service Registry', (section) => {
             serviceType: 'test',
             ipv4address: 'whatever',
             availableMemory: 203984706,
+            machineId: machineId(),
         });
         const data = response.body;
 
@@ -61,6 +63,7 @@ section('RDA Service Registry', (section) => {
             serviceType: 'test',
             ipv4address: 'whatever',
             availableMemory: 203984706,
+            machineId: machineId(),
         });
         const data = response.body;
 
@@ -98,6 +101,7 @@ section('RDA Service Registry', (section) => {
             serviceType: 'test',
             ipv4address: 'whatever',
             availableMemory: 203984706,
+            machineId: machineId(),
         });
         const data = response.body;
 
@@ -135,6 +139,7 @@ section('RDA Service Registry', (section) => {
             serviceType: 'test',
             ipv4address: 'whatever',
             availableMemory: 203984706,
+            machineId: machineId(),
         });
         const data = response.body;
 

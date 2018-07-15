@@ -18,6 +18,7 @@ create table rda_service_registry."serviceInstance" (
     identifier varchar(100) not null,
     ipv4address varchar (300),
     ipv6address varchar (300),
+    "machineId" varchar (32) not null,
     "availableMemory" int not null,
     "id_serviceType" int not null,
     created timestamp without time zone not null default now(),

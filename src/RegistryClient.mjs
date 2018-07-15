@@ -6,6 +6,7 @@ import superagent from 'superagent';
 import uuid from 'uuid';
 import os from 'os';
 import v8 from 'v8';
+import machineId from 'ee-machine-id';
 
 
 
@@ -30,6 +31,7 @@ export default class ServiceRegistryClient {
         this.serviceName = serviceName;
         this.webserverPort = webserverPort;
         this.protocol = protocol;
+        this.machineId = machineId();
 
 
 
@@ -122,6 +124,7 @@ export default class ServiceRegistryClient {
             identifier: this.identifier,
             serviceType: this.serviceName,
             availableMemory: stats.total_available_size,
+            machineId: this.machineId,
             ipv4address: addresses.ipv4 ? `${this.protocol}${addresses.ipv4}:${this.webserverPort}` : null,
             ipv6address: addresses.ipv6 ? `${this.protocol}${addresses.ipv6}:${this.webserverPort}` : null,
         });

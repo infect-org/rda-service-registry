@@ -5,7 +5,7 @@ const envr = require('envr');
 
 
 module.exports = {
-    port: 8000,
+    port: 9000,
     db: {
         type: 'postgres',
         database: 'test',

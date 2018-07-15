@@ -35,9 +35,6 @@ export default class ServiceRegistry extends RDAService {
     */
     async load() {
 
-        // get the configuration file
-        this.loadConfig(this.dirname());
-
 
         // load database
         this.related = new Related(this.config.db);

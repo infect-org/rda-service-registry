@@ -72,6 +72,7 @@ export default class ServiceInstanceController extends Controller {
         else if (!type.object(data)) response.status(400).send(`Request body must be a json object!`);
         else if (!type.string(data.identifier)) response.status(400).send(`Missing parameter 'identifier' in request body!`);
         else if (!type.string(data.serviceType)) response.status(400).send(`Missing parameter 'serviceType' in request body!`);
+        else if (!type.number(data.availableMemory)) response.status(400).send(`Missing parameter 'availableMemory' in request body!`);
         else if (!type.string(data.ipv4address) && !type.string(data.ipv6address)) response.status(400).send(`Missing parameter 'ipv4address' or 'ipv6address' in request body!`);
         else {
 
@@ -93,6 +94,7 @@ export default class ServiceInstanceController extends Controller {
                 identifier: data.identifier,
                 updated: new Date(),
                 serviceType: serviceType,
+                availableMemory: data.availableMemory,
                 ipv6address: data.ipv6address,
                 ipv4address: data.ipv4address,
             }).save();

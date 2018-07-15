@@ -5,6 +5,8 @@ import logd from 'logd';
 import superagent from 'superagent';
 import uuid from 'uuid';
 import os from 'os';
+import v8 from 'v8';
+
 
 
 const log = logd.module('rda-service-registry-client');
@@ -111,10 +113,15 @@ export default class ServiceRegistryClient {
         // private or internal
         const addresses = this.getPublicNetworkInterfaces();
 
+        // report the available heap size to the registry, it is used 
+        // to distribute the load on compute clients
+        const stats = v8.getHeapStatistics();
+
 
         const response = await superagent.post(`${this.registryHost}/rda-service-registry.service-instance`).ok(res => res.status === 201).send({
             identifier: this.identifier,
             serviceType: this.serviceName,
+            availableMemory: stats.total_available_size,
             ipv4address: addresses.ipv4 ? `${this.protocol}${addresses.ipv4}:${this.webserverPort}` : null,
             ipv6address: addresses.ipv6 ? `${this.protocol}${addresses.ipv6}:${this.webserverPort}` : null,
         });

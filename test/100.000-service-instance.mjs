@@ -21,6 +21,7 @@ section('RDA Service Registry', (section) => {
         await section.wait(200);
         await service.end();
     });
+    
 
     section.test('Register a new Service', async() => {
         const service = new Service();
@@ -33,6 +34,7 @@ section('RDA Service Registry', (section) => {
             identifier: id,
             serviceType: 'test',
             ipv4address: 'whatever',
+            availableMemory: 203984706,
         });
         const data = response.body;
 
@@ -58,6 +60,7 @@ section('RDA Service Registry', (section) => {
             identifier: id,
             serviceType: 'test',
             ipv4address: 'whatever',
+            availableMemory: 203984706,
         });
         const data = response.body;
 
@@ -94,6 +97,7 @@ section('RDA Service Registry', (section) => {
             identifier: id,
             serviceType: 'test',
             ipv4address: 'whatever',
+            availableMemory: 203984706,
         });
         const data = response.body;
 
@@ -130,6 +134,7 @@ section('RDA Service Registry', (section) => {
             identifier: id,
             serviceType: 'test',
             ipv4address: 'whatever',
+            availableMemory: 203984706,
         });
         const data = response.body;
 

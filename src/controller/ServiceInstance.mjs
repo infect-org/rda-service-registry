@@ -25,7 +25,7 @@ export default class ServiceInstanceController extends Controller {
 
 
         // time until a service is seen as dead
-        this.serviceTTL = 30;
+        this.serviceTTL = 10;
     }
 
 

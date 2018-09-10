@@ -1,33 +1,45 @@
 # RDA Service Registry
 
-The service registry knows at all times which service instance is running where.
-It is consumed by the RDA-Manager Service which orchestrates the services needed
-for the RDA system.
-
-The registry stores its status in a postgres db and is because of that stateless.
-
-## API
-
-### PUT /rda-service-registry.service-instance/:id
-
-This endpoint is used by the services to tell the registry that they are online 
-and ready to accept work. Each service needs to call this endpoint every x seconds 
-as proof of life. If the service stops calling this endpoint it is assumed to be 
-offline.
-
-payload:
-
-```json
-{
-    "serviceType": "rda-compute-node",
-    "instanceId": "uuid.v4"
-}
-```
+Basically a DNS Server for RDA services. Other services can register, 
+de-register themselves and lookup other service. All RDA services register
+themselves at the registry in order to be consumable by other RDA services.
 
 
-### DELETE /rda-service-registry.service-instance/:id
-
-This endpoint is used by the service instances to remove themselves from the RDA
-cluster.
+Please don't call the API for this service directly, use the the [Client](https://www.npmjs.com/package/@infect/rda-service-registry-client)
+instead!
 
 
+# RESTful API
+
+
+### GET /rda-service-registry.service-instance?serviceType={serviceName}
+
+Finds all service instances with a given service name. Returns their addresses
+so that they can be consumed.
+
+
+
+### POST /rda-service-registry.service-instance
+
+Register a service.
+
+Parameters:
+- identifier: uuid v4 string. unique identifier for the service instance
+- serviceType: the name of the service (the same name is used when looking up services)
+- availableMemory: the amount of memory the service can allocate
+- machineId: an unique id for the server the service is running on
+- ipv4address or ipv6address: an ipv4 or ipv6 url where the service can be reached
+
+
+
+### PATCH /rda-service-registry.service-instance/{serviceIdentifer}
+
+Tells the registry that the service is still alive. This is required by the 
+service registry in order to remove dead hosts. The interval this method has
+to be called is returned by the create call as ttl value.
+
+
+
+### DELETE /rda-service-registry.service-instance/{serviceIdentifer}
+
+Remove a service instance from the registry

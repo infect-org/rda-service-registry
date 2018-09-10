@@ -9,17 +9,19 @@ Please don't call the API for this service directly, use the the [Client](https:
 instead!
 
 
-# RESTful API
+## RESTful API
 
 
-### GET /rda-service-registry.service-instance?serviceType={serviceName}
+### Resource rda-service-registry.service-instance
+
+#### GET /rda-service-registry.service-instance?serviceType={serviceName}
 
 Finds all service instances with a given service name. Returns their addresses
 so that they can be consumed.
 
 
 
-### POST /rda-service-registry.service-instance
+#### POST /rda-service-registry.service-instance
 
 Register a service.
 
@@ -32,7 +34,7 @@ Parameters:
 
 
 
-### PATCH /rda-service-registry.service-instance/{serviceIdentifer}
+#### PATCH /rda-service-registry.service-instance/{serviceIdentifer}
 
 Tells the registry that the service is still alive. This is required by the 
 service registry in order to remove dead hosts. The interval this method has
@@ -40,6 +42,6 @@ to be called is returned by the create call as ttl value.
 
 
 
-### DELETE /rda-service-registry.service-instance/{serviceIdentifer}
+#### DELETE /rda-service-registry.service-instance/{serviceIdentifer}
 
 Remove a service instance from the registry

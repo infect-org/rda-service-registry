@@ -1,21 +1,14 @@
-'use strict';
-
-
 import RDAService from 'rda-service';
 import path from 'path';
 import logd from 'logd';
 import Related from 'related';
 import RelatedTimestamps from 'related-timestamps';
 
-const log = logd.module('rda-service-registry');
-
-
-
-// controllers
 import ServiceInstanceController from './controller/ServiceInstance';
 
 
 
+const log = logd.module('rda-service-registry');
 
 
 

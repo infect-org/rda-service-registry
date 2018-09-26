@@ -1,7 +1,4 @@
-'use strict';
-
-
-import {Controller} from 'rda-service';
+import { Controller } from 'rda-service';
 import type from 'ee-types';
 import logd from 'logd';
 
@@ -35,11 +32,10 @@ export default class ServiceInstanceController extends Controller {
     /**
     * list service that are online of a certain type
     */
-    async list(request, response) {
-        const serviceType = request.query.serviceType;
+    async list(request) {
+        const serviceType = request.query().serviceType;
 
-
-        if (!type.string(serviceType)) response.status(400).send(`Missing parameter 'serviceType' in the requests query!`);
+        if (!type.string(serviceType)) request.response().status(400).send(`Missing parameter 'serviceType' in the requests query!`);
         else {
             const thirtySecondsAgo = new Date();
             thirtySecondsAgo.setSeconds(thirtySecondsAgo.getSeconds()-this.serviceTTL);
@@ -58,15 +54,12 @@ export default class ServiceInstanceController extends Controller {
 
 
 
-
-
-
-
     /**
     * register a new service
     */
-    async create(request, response) {
-        const data = request.body;
+    async create(request) {
+        const data = await request.getData();
+        const response = request.response();
         
         if (!data) response.status(400).send(`Missing request body!`);
         else if (!type.object(data)) response.status(400).send(`Request body must be a json object!`);
@@ -121,11 +114,12 @@ export default class ServiceInstanceController extends Controller {
     /**
     * keep the service alive by calling this enpoint
     */
-    async update(request, response) {
-        const identifier = request.params.id;
+    async update(request) {
+        if (!request.hasParameter('id')) {
+            request.response().status(400).send(`Missing parameter 'id' in the request url!`);
+        } else {
+            const identifier = request.getParameter('id');
 
-        if (!type.string(identifier)) response.status(400).send(`Missing parameter 'identifier' in the request url!`);
-        else {
             const instance = await this.db.serviceInstance('*', {
                 identifier: identifier
             }).findOne();
@@ -133,11 +127,10 @@ export default class ServiceInstanceController extends Controller {
             if (instance) {
                 instance.updated = new Date();
 
-
                 log.debug(`Updating registered service instance '${instance.identifier}' ...`);
 
                 return await instance.save();
-            } else response.status(404).send(`Service instance '${identifier}' not found!`);
+            } else request.response().status(404).send(`Service instance '${identifier}' not found!`);
         }
     }
 
@@ -149,11 +142,11 @@ export default class ServiceInstanceController extends Controller {
     /**
     * de-register a service instance
     */
-    async delete(request, response) {
-        const identifier = request.params.id;
-
-        if (!type.string(identifier)) response.status(400).send(`Missing parameter 'identifier' in the request url!`);
-        else {
+    async delete(request) {
+        if (!request.hasParameter('id')) {
+            request.response().status(400).send(`Missing parameter 'id' in the request url!`);
+        } else {
+            const identifier = request.getParameter('id');
             const instance = await this.db.serviceInstance('*', {
                 identifier: identifier
             }).findOne();
@@ -164,7 +157,7 @@ export default class ServiceInstanceController extends Controller {
                 log.info(`Removing registered service instance '${instance.identifier}' ...`);
 
                 return await instance.save();
-            } else response.status(404).send(`Service instance '${identifier}' not found!`);
+            } else request.response().status(404).send(`Service instance '${identifier}' not found!`);
         }
     }
 }

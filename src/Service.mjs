@@ -4,7 +4,7 @@ import logd from 'logd';
 import Related from 'related';
 import RelatedTimestamps from 'related-timestamps';
 
-import ServiceInstanceController from './controller/ServiceInstance';
+import ServiceInstanceController from './controller/ServiceInstance.mjs';
 
 
 

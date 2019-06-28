@@ -1,6 +1,6 @@
 'use strict';
 
-import Service from './src/Service';
+import Service from './src/Service.mjs';
 import logd from 'logd';
 import ConsoleTransport from 'logd-console-transport';
 

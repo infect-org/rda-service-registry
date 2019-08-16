@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/infect-org/rda-service-registry#readme",
   "dependencies": {
-    "@distributed-systems/http2-client": "^1.2.3",
+    "@distributed-systems/http2-client": "^2.0.0",
     "ee-log": "^3.0.9",
     "ee-machine-id": "^1.0.2",
-    "ee-types": "^2.2.1",
+    "ee-types": "^3.0.0",
     "envr": "^2.1.4",
     "express": "^4.17.1",
     "logd": "^2.3.0",

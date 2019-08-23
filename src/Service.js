@@ -1,13 +1,13 @@
-import RDAService from 'rda-service';
+import RDAService from '@infect/rda-service';
 import path from 'path';
 import logd from 'logd';
 import Related from 'related';
 import RelatedTimestamps from 'related-timestamps';
-
 import ServiceInstanceController from './controller/ServiceInstance.js';
 
 
 
+const appRoot = path.join(path.dirname(new URL(import.meta.url).pathname), '../');
 const log = logd.module('rda-service-registry');
 
 
@@ -17,7 +17,10 @@ export default class ServiceRegistry extends RDAService {
 
 
     constructor() {
-        super('rda-service-registry');
+        super({
+            name: 'rda-service-registry',
+            appRoot, 
+        });
     }
 
 

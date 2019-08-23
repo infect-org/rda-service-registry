@@ -1,4 +1,4 @@
-import { Controller } from 'rda-service';
+import { Controller } from '@infect/rda-service';
 import type from 'ee-types';
 import logd from 'logd';
 

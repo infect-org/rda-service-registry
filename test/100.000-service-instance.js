@@ -3,7 +3,7 @@ import HTTP2Client from '@distributed-systems/http2-client';
 import log from 'ee-log';
 import machineId from 'ee-machine-id';
 import section from 'section-tests';
-import Service from '../index.mjs';
+import Service from '../index.js';
 
 
 

@@ -30,14 +30,14 @@ export default class ServiceRegistry extends RDAService {
     * prepare the service
     */
     async load() {
-
+        await this.initialize();
 
         // load database
-        this.related = new Related(this.config.db);
+        this.related = new Related(this.config.get('database'));
         this.related.use(new RelatedTimestamps());
 
         await this.related.load();
-        this.db = this.related[this.config.db.schema];
+        this.db = this.related[this.config.get('database').schema];
 
 
         const options = {
@@ -50,7 +50,7 @@ export default class ServiceRegistry extends RDAService {
 
 
         // laod the server, det port explicitly
-        await super.load(this.config.port);
+        await super.load(this.config.get('server.port'));
     }
 
 

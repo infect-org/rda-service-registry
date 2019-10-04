@@ -1,0 +1,17 @@
+server:
+    port: 9000
+    
+
+database:
+    type: postgres
+    database: infect
+    schema: rda_service_registry
+    hosts:
+        - host: 10.80.100.1
+          username: postgres
+          password: ${SERVICE_REGISTRY_DB_PASSWORD}
+          port: 5432
+          pools:
+            - read
+            - write
+          maxConnections: 20

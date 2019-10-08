@@ -1,6 +1,6 @@
 {
   "name": "@infect/rda-service-registry",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Service registry for the RDA framework",
   "main": "index.js",
   "scripts": {

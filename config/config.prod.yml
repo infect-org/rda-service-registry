@@ -4,14 +4,17 @@ server:
 
 database:
     type: postgres
-    database: infect
+    database: rda
     schema: rda_service_registry
     hosts:
-        - host: ${SERVICE_REGISTRY_DB_HOST}
-          username: root
-          password: ${SERVICE_REGISTRY_DB_PASSWORD}
+        - host: ${SERVICE_REGISTRY_SERVICE_DB_HOST}
+          username: ${SERVICE_REGISTRY_SERVICE_DB_USER}
+          password: ${SERVICE_REGISTRY_SERVICE_DB_PASSWORD}
           port: 5432
           pools:
             - read
             - write
           maxConnections: 20
+
+service-registry:
+    host: ${SERVICE_REGISTRY_HOST}

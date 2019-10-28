@@ -39,7 +39,6 @@ export default class ServiceRegistry extends RDAService {
         await this.related.load();
         this.db = this.related[this.config.get('database').schema];
 
-
         const options = {
             db: this.db,
         };

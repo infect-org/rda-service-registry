@@ -15,3 +15,6 @@ database:
             - read
             - write
           maxConnections: 20
+
+
+service-ttl: 60

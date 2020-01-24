@@ -10,10 +10,14 @@ const log = logd.module('rda-service-registry');
 export default class ServiceInstanceController extends Controller {
 
 
-    constructor({db}) {
+    constructor({
+        db,
+        config,
+    }) {
         super('service-instance');
 
         this.db = db;
+        this.config = config;
 
         this.enableAction('update');
         this.enableAction('create');
@@ -22,7 +26,7 @@ export default class ServiceInstanceController extends Controller {
 
 
         // time until a service is seen as dead
-        this.serviceTTL = 10;
+        this.serviceTTL = this.config.get('service-ttl');
     }
 
 

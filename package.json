@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/infect-org/rda-service-registry#readme",
   "dependencies": {
-    "@distributed-systems/http2-client": "^2.0.0",
-    "@infect/rda-service": "^4.0.2",
+    "@distributed-systems/http2-client": "^2.1.0",
+    "@infect/rda-service": "^5.0.0",
     "ee-log": "^3.0.9",
     "ee-machine-id": "^1.0.3",
     "ee-types": "^3.0.0",
@@ -32,7 +32,7 @@
     "logd-console-transport": "^1.1.0",
     "related": "^2.16.0",
     "related-timestamps": "^2.0.0",
-    "uuid": "^3.3.3"
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "section-tests": "^2.2.4"

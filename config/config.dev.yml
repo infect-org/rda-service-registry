@@ -19,3 +19,6 @@ database:
 
 service-registry:
     host: http://l.dns.porn:9000
+
+
+service-ttl: 30

@@ -41,6 +41,7 @@ export default class ServiceRegistry extends RDAService {
 
         const options = {
             db: this.db,
+            config: this.config,
         };
 
 

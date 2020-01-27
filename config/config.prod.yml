@@ -19,5 +19,4 @@ database:
 service-registry:
     host: ${SERVICE_REGISTRY_HOST}
 
-
-service-ttl: 60
+service-ttl: ${SERVICE_REGISTRY_TTL}
